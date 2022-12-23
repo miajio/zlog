@@ -33,8 +33,7 @@ type Logger struct {
 
 // LoggerInterface
 type LoggerInterface interface {
-	Generate(LogMap)  // Generate logger core
-	Printf(...string) // Printf
+	Generate(LogMap) // Generate logger core
 }
 
 // default log level
@@ -50,6 +49,8 @@ var (
 	ErrorLevel = func(level zapcore.Level) bool {
 		return level == zap.ErrorLevel
 	}
+
+	_ LoggerInterface = (*Logger)(nil)
 )
 
 // Generate
